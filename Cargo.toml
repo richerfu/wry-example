@@ -1,29 +1,21 @@
-[package]
-name = "wry-example"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+resolver = "2"
+members = ["examples/*"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-napi-ohos = { path = "../project/ohos-rs/ohos-rs/crates/napi", default-features = false, features = [
-    "napi8",
-    "async",
-] }
+[workspace.dependencies]
+# basic dependencies
+napi-ohos = { path = "../project/ohos-rs/ohos-rs/crates/napi" }
 napi-derive-ohos = { path = "../project/ohos-rs/ohos-rs/crates/macro" }
 winit = { path = "../project/southorange/winit" }
 wry = { path = "../project/southorange/wry" }
-openharmony-ability = { path = "../project/ohos-rs/openharmony-activity/crates/ability", features = [
-    "webview",
-] }
+openharmony-ability = { path = "../project/ohos-rs/openharmony-activity/crates/ability" }
 openharmony-ability-derive = { path = "../project/ohos-rs/openharmony-activity/crates/derive" }
-dpi = "0.1"
 
-[build-dependencies]
+
+
+# build dependencies
 napi-build-ohos = { path = "../project/ohos-rs/ohos-rs/crates/build" }
 
-[profile.release]
-lto = true
+# external dependencies
+dpi = "0.1"
