@@ -1,5 +1,5 @@
-# wry-winit
+# wry-tao
 
-Use winit to render wry
+Use tao to render wry
 
 ![example](../../fixtures/tao-example.png)
