@@ -64,7 +64,7 @@ pub fn openharmony(app: OpenHarmonyApp) {
         .with_openharmony_app(app.clone())
         .build()
         .unwrap();
-    let mut state = State::default();
+    let state = State::default();
     let state_app = Box::leak(Box::new(state));
     event_loop.run_app(state_app).unwrap();
 }

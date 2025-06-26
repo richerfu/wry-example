@@ -5,3 +5,4 @@ This is an experimental example that using `wry` render with HarmonyOS 5/OpenHar
 ## Show cases
 
 - [basic](./examples/basic)
+- [tao-basic](./examples/tao-example)

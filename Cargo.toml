@@ -12,6 +12,7 @@ wry = { git = "https://github.com/richerfu/wry.git", branch = "dev" }
 openharmony-ability = { git = "https://github.com/harmony-contrib/openharmony-ability.git" }
 openharmony-ability-derive = { git = "https://github.com/harmony-contrib/openharmony-ability.git" }
 
+tao = { git = "https://github.com/richerfu/tao.git", branch = "dev" }
 
 # build dependencies
 napi-build-ohos = { version = "1.0" }
