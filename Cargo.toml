@@ -5,17 +5,16 @@ members = ["examples/*"]
 
 [workspace.dependencies]
 # basic dependencies
-napi-ohos = { path = "../project/ohos-rs/ohos-rs/crates/napi" }
-napi-derive-ohos = { path = "../project/ohos-rs/ohos-rs/crates/macro" }
-winit = { path = "../project/southorange/winit" }
-wry = { path = "../project/southorange/wry" }
-openharmony-ability = { path = "../project/ohos-rs/openharmony-activity/crates/ability" }
-openharmony-ability-derive = { path = "../project/ohos-rs/openharmony-activity/crates/derive" }
-
+napi-ohos = { version = "1.0" }
+napi-derive-ohos = { version = "1.0" }
+winit = { git = "https://github.com/richerfu/winit.git", branch = "feat-ohos-webview" }
+wry = { git = "https://github.com/richerfu/wry.git", branch = "dev" }
+openharmony-ability = { git = "https://github.com/harmony-contrib/openharmony-ability.git" }
+openharmony-ability-derive = { git = "https://github.com/harmony-contrib/openharmony-ability.git" }
 
 
 # build dependencies
-napi-build-ohos = { path = "../project/ohos-rs/ohos-rs/crates/build" }
+napi-build-ohos = { version = "1.0" }
 
 # external dependencies
 dpi = "0.1"

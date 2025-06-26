@@ -8,7 +8,7 @@ use winit::{
     event_loop::{ActiveEventLoop, EventLoop},
     window::{Window, WindowId},
 };
-use wry::{Rect, WebViewBuilder, WebViewBuilderExtOhos};
+use wry::{Rect, WebViewBuilder};
 
 #[derive(Default)]
 struct State {

@@ -1,9 +1,7 @@
 # Wry Example for HarmonyOS5/OpenHarmony
 
-This is an experimental example that using `wry` render with HarmonyOS5/OpenHarmony.
+This is an experimental example that using `wry` render with HarmonyOS 5/OpenHarmony.
 
-## Show case
+## Show cases
 
-### Basic example
-
-![basic example](./fixtures/example.png)
+- [basic](./examples/basic)
