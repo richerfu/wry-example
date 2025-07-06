@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello</title>
+</head>
+<body>
+
+<h1>Hello</h1>
+<p>
+  <button>Change Background Color</button>
+</p>
+
+<script>
+  document.querySelector('button').addEventListener('click', () => {
+    const randomColor = Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0');
+    window.ipc.postMessage(`hello:#${randomColor}`);
+  });
+</script>
+
+</body>
+</html>

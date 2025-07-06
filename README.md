@@ -6,3 +6,4 @@ This is an experimental example that using `wry` render with HarmonyOS 5/OpenHar
 
 - [basic](./examples/basic)
 - [tao-basic](./examples/tao-example)
+- [basic-ipc](./examples/basic-ipc-example)
