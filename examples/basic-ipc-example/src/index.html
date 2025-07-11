@@ -1,22 +1,51 @@
+<!-- entry/src/main/resources/rawfile/runJS.html -->
+<!-- runJS.html -->
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Hello</title>
-</head>
-<body>
+<html lang="en-gb">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>run javascript demo</title>
+  </head>
 
-<h1>Hello</h1>
-<p>
-  <button>Change Background Color</button>
-</p>
+  <body>
+    <h1>run JavaScript Ext demo</h1>
+    <p id="webDemo"></p>
+    <br />
+    <button
+      type="button"
+      style="height: 30px; width: 200px"
+      onclick="testNdkProxyObjMethod1()"
+    >
+      test !
+    </button>
+    <br />
+    <br />
+  </body>
+  <script type="text/javascript">
+    function testNdkProxyObjMethod1() {
+      if (window.ipc == undefined) {
+        document.getElementById("webDemo").innerHTML = "ipc undefined";
+        return "ipc undefined";
+      }
+      if (window.ipc.postMessage == undefined) {
+        document.getElementById("webDemo").innerHTML =
+          "ipc.postMessage undefined";
+        return "ipc.postMessage undefined";
+      }
+      const randomColor = Math.floor(Math.random() * 0xffffff)
+        .toString(16)
+        .padStart(6, "0");
+      window.ipc.postMessage(`hello:#${randomColor}`);
+      console.log(
+        "send message and test is ok, " +
+          randomColor +
+          ", type:" +
+          typeof randomColor
+      );
+    }
 
-<script>
-  document.querySelector('button').addEventListener('click', () => {
-    const randomColor = Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0');
-    window.ipc.postMessage(`hello:#${randomColor}`);
-  });
-</script>
-
-</body>
+    function testNdkProxyObjMethod2() {
+      console.log("testNdkProxyObjMethod2");
+    }
+  </script>
 </html>

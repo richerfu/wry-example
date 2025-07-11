@@ -41,29 +41,26 @@ fn openharmony(app: OpenHarmonyApp) {
             }
             Event::Resumed => {
                 let e = proxy.clone();
-                let handler = move |req: Request<String>| {
-                    let body = req.body();
-                    match body.as_str() {
-                        _ if body.starts_with("hello:") => {
-                            let color = body.replace("hello:", "");
-                            let _ = e.send_event(UserEvent::Hello(color));
-                        }
-                        _ => {}
-                    }
-                };
                 let webview = WebViewBuilder::new()
                     .with_html(INDEX_HTML)
-                    .with_ipc_handler(handler)
+                    .with_ipc_handler(move |req: Request<String>| {
+                        let body = req.body();
+                        match body.as_str() {
+                            _ if body.starts_with("hello:") => {
+                                let color = body.replace("hello:", "");
+                                let _ = e.send_event(UserEvent::Hello(color));
+                            }
+                            _ => {}
+                        }
+                    })
                     .build(&window)
                     .map_err(|e| {
                         let s = e.to_string();
-                        println!("Failed to build webview: {}", s);
+                        println!("Error building webview: {:?}", s);
                     })
                     .unwrap();
 
-                WEBVIEW.with(|w| {
-                    *w.borrow_mut() = Some(webview);
-                });
+                    WEBVIEW.replace(Some(webview));
             }
             Event::WindowEvent {
                 event: WindowEvent::CloseRequested,
@@ -72,11 +69,11 @@ fn openharmony(app: OpenHarmonyApp) {
             Event::UserEvent(e) => match e {
                 UserEvent::Hello(color) => {
                     let _ = WEBVIEW.with(|w| {
-                      let _ = w.borrow_mut().as_ref().unwrap().evaluate_script("console.log('Hello from Rust!');");
-                        let _ = w.borrow_mut().as_ref().unwrap().evaluate_script(&format!(
+                        let a = format!(
                             "document.body.style.backgroundColor = '{}'",
                             color
-                        ));
+                        );
+                        let _ = w.borrow_mut().as_ref().unwrap().evaluate_script(&a);
                     });
                 }
             },
