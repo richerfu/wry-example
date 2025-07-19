@@ -1,7 +1,7 @@
 // Copyright 2020-2023 Tauri Programme within The Commons Conservancy
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-License-Identifier: MIT
-if (window.location.pathname.startsWith("/page2")) {
+if (window.location.pathname.startsWith("./page2")) {
   console.log("hello from javascript in page2");
 } else {
   console.log("hello from javascript in page1");

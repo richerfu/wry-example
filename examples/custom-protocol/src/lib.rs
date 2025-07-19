@@ -1,3 +1,5 @@
+use std::cell::RefCell;
+
 use openharmony_ability::OpenHarmonyApp;
 use openharmony_ability_derive::ability;
 use tao::{
@@ -6,7 +8,7 @@ use tao::{
 };
 use wry::{
     http::{header::CONTENT_TYPE, Request, Response},
-    WebViewBuilder,
+    WebView, WebViewBuilder,
 };
 
 static INDEX_HTML: &str = include_str!("index.html");
@@ -14,7 +16,11 @@ static SUBPAGE_HTML: &str = include_str!("subpage.html");
 static INDEX_WASM: &[u8] = include_bytes!("wasm.wasm");
 static INDEX_JS: &str = include_str!("script.js");
 
-#[ability(webview)]
+thread_local! {
+    static WEBVIEW: RefCell<Option<WebView>> = RefCell::new(None);
+}
+
+#[ability(webview, protocol = "wry")]
 pub fn openharmony(app: OpenHarmonyApp) {
     let event_loop = EventLoopBuilder::<()>::with_user_event()
         .with_openharmony_app(app.clone())
@@ -23,6 +29,10 @@ pub fn openharmony(app: OpenHarmonyApp) {
 
     event_loop.run(move |event, _, _| match event {
         Event::Resumed => {
+            // if WEBVIEW.with(|w| w.borrow().is_some()) {
+            //     return;
+            // }
+
             let builder = WebViewBuilder::new()
                 .with_custom_protocol("wry".into(), move |_webview_id, request| {
                     match get_wry_response(request) {
@@ -40,7 +50,7 @@ pub fn openharmony(app: OpenHarmonyApp) {
 
             let webview = builder.build(&window).unwrap();
 
-            let w = Box::leak(Box::new(webview));
+            WEBVIEW.replace(Some(webview));
         }
         _ => {}
     });
