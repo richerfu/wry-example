@@ -7,7 +7,7 @@ members = ["examples/*"]
 # basic dependencies
 napi-ohos = { version = "1.1" }
 napi-derive-ohos = { version = "1.1" }
-winit = { git = "https://github.com/richerfu/winit.git", branch = "feat-ohos-webview" }
+winit = { git = "https://github.com/richerfu/winit.git", branch = "feat-ohos-3x" }
 wry = { git = "https://github.com/richerfu/wry.git", branch = "dev" }
 
 openharmony-ability = { version = "0.2" }

@@ -8,3 +8,6 @@ package/libs
 *.har
 
 Cargo.lock
+
+webview_example/entry/libs/arm64-v8a/
+webview_example/entry/libs/index.d.ts

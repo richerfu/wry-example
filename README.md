@@ -8,3 +8,7 @@ This is an experimental example that using `wry` render with HarmonyOS 5/OpenHar
 - [tao-basic](./examples/tao-example)
 - [basic-ipc](./examples/basic-ipc-example)
 - [custom-protocol](./examples/custom-protocol)
+
+## How to build or development?
+
+See [Development](./Development.md).
