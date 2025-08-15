@@ -40,6 +40,23 @@ Select or download image that you want to create, i recommend you select or down
 
 ![444](./fixtures/develop/444.png)
 
+### Can't find image to download?
+
+If you can't find any images to download, please check the following file:
+
+- Window: `C:\Users\xxx\AppData\Roaming\Huawei\${version}\options\country.region.xml`
+- Mac: `~/Library/Application Support/Huawei/${version}/options/country.region.xml`
+
+The content of file should be:
+```xml
+<application>
+    <component name="CountryRegionSetting">
+        <countryregion name="CN"/>
+    </component>
+</application>
+```
+If not please copy the code into it.
+
 Finish setups.
 
 ![555](./fixtures/develop/555.png)
